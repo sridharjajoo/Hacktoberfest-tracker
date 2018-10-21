@@ -27,6 +27,7 @@ public class HacktoberfestMainActivity extends AppCompatActivity implements HasS
     @Inject
     DispatchingAndroidInjector<Fragment> dispatchingAndroidInjector;
 
+    @Inject
     GithubService githubService;
 
     @BindView(R.id.search_view)
