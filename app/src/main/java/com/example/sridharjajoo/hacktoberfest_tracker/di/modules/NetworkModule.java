@@ -10,25 +10,27 @@ import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Converter;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module(includes = ApiModule.class)
 public class NetworkModule {
 
     @Provides
     @Singleton
-    OkHttpClient providesOkHttpClient(HttpLoggingInterceptor httpLoggingInterceptor, Cache cache) {
+    OkHttpClient providesOkHttpClient() {
         return new OkHttpClient.Builder()
-                .addInterceptor(httpLoggingInterceptor)
-                .cache(cache)
                 .build();
     }
 
     @Provides
     @Singleton
-    Retrofit providesRetrofitBuilder(@Named("jsonapi") Converter.Factory jsonApiConverter, OkHttpClient client) {
+    Retrofit providesRetrofitBuilder(OkHttpClient client) {
         return new Retrofit.Builder()
-                .addConverterFactory(jsonApiConverter)
                 .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .baseUrl("https://api.github.com")
                 .build();
     }

@@ -14,5 +14,4 @@ public abstract class ModelModule {
     @Binds
     @Singleton
     abstract GithubService bindsGithubModule(GithubServiceImpl githubService);
-
 }

@@ -24,12 +24,12 @@
 
     <TextView
         android:id="@+id/tv_hello"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="50sp"
         android:layout_gravity="center"
         android:layout_marginTop="200dp"
-        android:gravity="center"
-        android:text="HELLO"/>
+        android:gravity="center" />
 
     <ProgressBar
         android:id="@+id/progress"
