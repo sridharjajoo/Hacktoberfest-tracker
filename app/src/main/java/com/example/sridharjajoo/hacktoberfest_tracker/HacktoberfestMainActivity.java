@@ -3,8 +3,10 @@ package com.example.sridharjajoo.hacktoberfest_tracker;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -40,6 +42,12 @@ public class HacktoberfestMainActivity extends AppCompatActivity implements HasS
     @BindView(R.id.progress)
     ProgressBar progressBar;
 
+    @BindView(R.id.user_data)
+    LinearLayout userData;
+
+    @BindView(R.id.message)
+    TextView message;
+
     @Inject
     GithubService githubService;
 
@@ -50,6 +58,18 @@ public class HacktoberfestMainActivity extends AppCompatActivity implements HasS
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hacktoberfest_main);
         ButterKnife.bind(this);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                checkClick();
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
     }
 
     @OnClick(R.id.iv_check)
@@ -67,9 +87,11 @@ public class HacktoberfestMainActivity extends AppCompatActivity implements HasS
                 })
                 .doFinally(() -> {
                     progressBar.setVisibility(GONE);
+                    userData.setVisibility(VISIBLE);
                 })
                 .subscribe((count) -> {
-                    tv_hello.setText(Integer.toString(count.total_count));
+                    tv_hello.setText(Integer.toString(count.totalCount));
+                    message.setText(Utils.message(count.totalCount));
                 }));
     }
 

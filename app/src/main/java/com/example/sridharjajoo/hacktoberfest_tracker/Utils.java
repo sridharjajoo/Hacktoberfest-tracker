@@ -20,4 +20,24 @@ public class Utils {
             }
         }
     }
+
+    public static String message(int prCount) {
+
+        switch (prCount) {
+            case 0:
+                return "You better start contributing!";
+            case 1:
+                return "Fasten up! You still have time";
+            case 2:
+                return "You are on track!";
+            case 3:
+                return "Don't give up!";
+            case 4:
+                return "Just 1 more to go!";
+            case 5:
+                return "Challenge completed!";
+            default:
+                return "Now you are showing off!";
+        }
+    }
 }

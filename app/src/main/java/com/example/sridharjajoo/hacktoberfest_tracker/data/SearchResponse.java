@@ -15,6 +15,6 @@ import lombok.NoArgsConstructor;
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class SearchResponse {
 
-    public int total_count;
-    public boolean incomplete_results;
+    public int totalCount;
+    public boolean incompleteResults;
 }
