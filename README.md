@@ -9,4 +9,4 @@ An app to track your hacktoberfest contributions. The following libraries have b
 
 App Screenshot:
 
-<img src="screenshot.png">
+<img src="screenshot2.png">
