@@ -102,7 +102,7 @@ public class HacktoberfestMainActivity extends AppCompatActivity implements HasS
                     Log.i("Hacktoberfest", count.items.get(0).user.avatarUrl);
                     tv_hello.setText(Integer.toString(count.totalCount));
                     message.setText(Utils.message(count.totalCount));
-                }));
+                }, throwable -> Utils.showToast(this, throwable.toString())));
     }
 
     @Override
