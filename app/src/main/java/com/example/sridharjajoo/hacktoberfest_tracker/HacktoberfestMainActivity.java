@@ -1,9 +1,11 @@
 package com.example.sridharjajoo.hacktoberfest_tracker;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.ImageViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -11,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.sridharjajoo.hacktoberfest_tracker.data.GithubService;
+import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
 
@@ -47,6 +50,9 @@ public class HacktoberfestMainActivity extends AppCompatActivity implements HasS
 
     @BindView(R.id.message)
     TextView message;
+
+    @BindView(R.id.profile_image)
+    de.hdodenhof.circleimageview.CircleImageView profileImage;
 
     @Inject
     GithubService githubService;
@@ -90,6 +96,10 @@ public class HacktoberfestMainActivity extends AppCompatActivity implements HasS
                     userData.setVisibility(VISIBLE);
                 })
                 .subscribe((count) -> {
+                    Picasso.with(this).load(count.items.get(0).user.avatarUrl)
+                            .into(profileImage);
+
+                    Log.i("Hacktoberfest", count.items.get(0).user.avatarUrl);
                     tv_hello.setText(Integer.toString(count.totalCount));
                     message.setText(Utils.message(count.totalCount));
                 }));

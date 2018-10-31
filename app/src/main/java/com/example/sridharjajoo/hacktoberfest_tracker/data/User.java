@@ -3,8 +3,6 @@ package com.example.sridharjajoo.hacktoberfest_tracker.data;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
-import java.util.List;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,9 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
-public class SearchResponse {
+public class User {
 
-    public int totalCount;
-    public boolean incompleteResults;
-    public List<Items> items;
+    public String avatarUrl;
 }

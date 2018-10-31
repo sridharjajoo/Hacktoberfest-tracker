@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="3dp" />
 
-    <android.support.v7.widget.AppCompatImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/iv_check"
         android:visibility="gone"
         android:layout_width="36dp"
@@ -23,6 +23,13 @@
         android:background="?android:attr/selectableItemBackground"
         app:srcCompat="@drawable/ic_check_black_24dp" />
 
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"/>
+
     <LinearLayout
         android:id="@+id/user_data"
         android:layout_width="match_parent"
@@ -30,7 +37,7 @@
         android:orientation="horizontal"
         android:layout_gravity="center_vertical"
         android:gravity="center"
-        android:visibility="gone"
+        android:visibility="visible"
         android:layout_marginTop="80dp">
 
         <TextView
