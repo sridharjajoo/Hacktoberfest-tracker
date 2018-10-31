@@ -7,3 +7,6 @@ An app to track your hacktoberfest contributions. The following libraries have b
 - Picasso
 - Retrofit
 
+App Screenshot:
+
+<img src="screenshot.png">
