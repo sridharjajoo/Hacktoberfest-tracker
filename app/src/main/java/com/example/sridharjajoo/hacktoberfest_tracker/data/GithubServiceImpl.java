@@ -9,19 +9,15 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-import com.example.sridharjajoo.hacktoberfest_tracker.util.DateTimeFormatter;
-
 public class GithubServiceImpl implements GithubService {
 
     private final GithubApi githubApi;
-    private final DateTimeFormatter customDateFormatter;
-    private final Date now;
+    private final int currentYear;
 
     @Inject
     public GithubServiceImpl(GithubApi githubApi) {
         this.githubApi = githubApi;
-        this.customDateFormatter = new DateTimeFormatter();
-        this.now = Calendar.getInstance().getTime();
+        this.currentYear = Calendar.getInstance().get(Calendar.YEAR);
     }
 
     @Override
@@ -40,14 +36,11 @@ public class GithubServiceImpl implements GithubService {
     }
 
     private String fromDate() {
-        Calendar lastYear = Calendar.getInstance();
-        lastYear.setTime(this.now);
-        lastYear.add(Calendar.YEAR, -1);
-        return customDateFormatter.getStringifiedDateTime(lastYear.getTime());
+        return this.currentYear + "-09-30T00:00:00-12:00";
     }
 
     private String toDate() {
-        return customDateFormatter.getStringifiedDateTime(this.now);
+        return this.currentYear + "-10-31T23:59:59-12:00";
     }
 
     private String getPrType() {
