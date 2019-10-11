@@ -32,7 +32,7 @@ public class GithubServiceImpl implements GithubService {
     }
 
     private String constructParamLink(String username) {
-        return getLabel() +fromDate()+".."+toDate()  + getPrTpe() + username;
+        return getLabel() +fromDate()+".."+toDate()  + getPrType() + username;
     }
 
     private String getLabel() {
@@ -50,7 +50,7 @@ public class GithubServiceImpl implements GithubService {
         return customDateFormatter.getStringifiedDateTime(this.now);
     }
 
-    private String getPrTpe() {
+    private String getPrType() {
         return "+type:pr+is:public+author:";
     }
 }
